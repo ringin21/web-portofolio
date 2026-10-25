@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: portfolio-api
+    runtime: go
+    rootDir: server
+    buildCommand: go build -o app .
+    startCommand: ./app
+    healthCheckPath: /up
+    # Without a disk, content and uploads are lost on every deploy (free tier). Disks need a paid plan.
+    # With a disk, also add env DATA_DIR=/var/data:
+    # disk: { name: data, mountPath: /var/data, sizeGB: 1 }
+    envVars:
+      - { key: COOKIE_SECURE, value: "1" }
+      - { key: TRUST_PROXY, value: "1" }
+      - { key: SESSION_SECRET, generateValue: true }
+      - { key: ADMIN_EMAIL, sync: false }
+      - { key: ADMIN_PASSWORD_HASH, sync: false }

@@ -1,0 +1,7 @@
+{
+  "rewrites": [
+    { "source": "/api/:path*", "destination": "https://GANTI-NAMA-SERVICE.onrender.com/api/:path*" },
+    { "source": "/storage/:path*", "destination": "https://GANTI-NAMA-SERVICE.onrender.com/storage/:path*" },
+    { "source": "/((?!assets/|favicon).*)", "destination": "/index.html" }
+  ]
+}
